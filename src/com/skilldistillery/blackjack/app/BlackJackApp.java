@@ -8,9 +8,13 @@ import java.util.Scanner;
 import com.skilldistillery.blackjack.entities.Card;
 import com.skilldistillery.blackjack.entities.Dealer;
 import com.skilldistillery.blackjack.entities.Deck;
+import com.skilldistillery.blackjack.entities.Player;
 
 //*****************Comparitor*****************
 //dealer is a type of player, but has a deck of cards they deal from as well. Extend player class.
+//I need a dealer
+//I need a player
+//determine rules of the game.
 public class BlackJackApp {
 	Scanner input = new Scanner(System.in);
 	public static void main(String[] args) {
@@ -20,13 +24,17 @@ public class BlackJackApp {
 	}
 	public void launch() {
 		presentMenu();
-		String play = input.nextLine();
-		if(play.equalsIgnoreCase("yes")) {
-			System.out.println("Lets play!");
+		Dealer d = new Dealer();
+		Player p = new Player();
+		Card c = d.dealCard();
+		System.out.println(c);
+		p.addCard(c);
+		System.out.println(p.getCards());
+		p.addCard(c);
+		System.out.println(p.getCards());
 		}
-	}
 	public void presentMenu() {
 		System.out.println("** Welcome to the BlackJack App!");
-		System.out.println("** Would you like to play?");
+		System.out.println("** Lets play!");
 	}
 }
