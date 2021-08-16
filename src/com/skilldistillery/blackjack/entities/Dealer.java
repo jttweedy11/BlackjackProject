@@ -63,6 +63,7 @@ public class Dealer extends Player {
 				System.out.println("Ouch! " + pHand.getHandTotal() + " is a bust. The dealer wins. Better luck next time!");
 			}
 		}
+		input.close();
 	}
 	public void dealerMoves() {
 		if(pHand.getHandTotal()< 22) {
