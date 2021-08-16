@@ -3,15 +3,23 @@ package com.skilldistillery.blackjack.entities;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player extends Hand{
-	protected List<Card> cards;
+public class Player {
+	protected BlackJackHand playerHand;
 	public Player() {
-		this.cards = new ArrayList<Card>();
+		this.playerHand = new BlackJackHand();
 	}
-	public void addCard(Card card) {
-		cards.add(card);
+	public void addToPlayerHands(Card card) {
+		playerHand.addCard(card);
 	}
-	public List<Card> getCards() {
-		return cards;
+	public BlackJackHand getPlayerHand() {
+		return playerHand;
 	}
+	public void setPlayerHand(BlackJackHand playerHand) {
+		this.playerHand = playerHand;
+	}
+	@Override
+	public String toString() {
+		return "Player [playerHand=" + playerHand + "]";
+	}
+	
 }

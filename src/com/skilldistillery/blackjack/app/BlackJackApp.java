@@ -17,6 +17,8 @@ import com.skilldistillery.blackjack.entities.Player;
 //determine rules of the game.
 public class BlackJackApp {
 	Scanner input = new Scanner(System.in);
+	Player p = new Player();
+	Dealer d = new Dealer(p);
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		BlackJackApp b = new BlackJackApp();
@@ -24,14 +26,11 @@ public class BlackJackApp {
 	}
 	public void launch() {
 		presentMenu();
-		Dealer d = new Dealer();
-		Player p = new Player();
-		Card c = d.dealCard();
-		System.out.println(c);
-		p.addCard(c);
-		System.out.println(p.getCards());
-		p.addCard(c);
-		System.out.println(p.getCards());
+		d.shuffleDeck();
+		d.dealFirstCard();
+		d.dealSecond();
+		d.checkBlackJack();
+		d.playerMoves();
 		}
 	public void presentMenu() {
 		System.out.println("** Welcome to the BlackJack App!");
