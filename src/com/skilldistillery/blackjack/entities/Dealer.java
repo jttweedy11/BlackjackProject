@@ -47,17 +47,72 @@ public class Dealer extends Player {
 		Scanner input = new Scanner(System.in);
 		int cont = 1;
 		while(cont == 1 && pHand.getHandTotal() < 21) {
-			System.out.println("Would you like to hit or stay?");
+			System.out.println("Would you like to hit or stand?");
 			String resp = input.nextLine();
-			if(resp.equalsIgnoreCase("hit")) {
+			if(resp.equalsIgnoreCase("stand")) {
+				System.out.println("You are standing with a " + pHand.getHandTotal());
+				cont = 0;
+			}
+			else if(resp.equalsIgnoreCase("hit")) {
 				Card c = deck.removeCard();
 				pHand.addCard(c);
 				System.out.println("The dealer has delt you a " + c);
 				System.out.println("Your total is now " + pHand.getHandTotal());
 			}
-			else if (pHand.bustCheck()) {
-				System.out.println("Ouch, you bust! I guess the dealer wins..");
+			if(pHand.getHandTotal()>21) {
+				System.out.println("Ouch! " + pHand.getHandTotal() + " is a bust. The dealer wins. Better luck next time!");
 			}
 		}
 	}
+	public void dealerMoves() {
+		if(pHand.getHandTotal()< 22) {
+			System.out.println("The dealers cards are:");
+			for(Card c : dHand.getHand()) {
+				System.out.println(c);
+			}
+			System.out.println("The dealer has a total of " + dHand.getHandTotal());
+			while(dHand.getHandTotal() < 17) {
+				Card c = deck.removeCard();
+				dHand.addCard(c);
+				System.out.println("The dealer has delt a " + c + " to the dealer hand");
+				System.out.println("The dealer hand now has a total of " + dHand.getHandTotal());
+			}
+			if(dHand.getHandTotal() > 21) {
+				System.out.println("The dealer has busted! You win!");
+			}
+		}
+	}
+	public void pickWinner() {
+		int pTotal = pHand.getHandTotal();
+		int dTotal = dHand.getHandTotal();
+		if(pTotal < 22 && dTotal < 22) {
+			if(pTotal == dTotal) {
+				System.out.println("It is a push! Both players had the same " + pTotal);
+			}
+			else if(pTotal > dTotal) {
+				System.out.println("Congradulations, you win with " + pTotal);
+			}
+			else {
+				System.out.println("Unfortunately, it appears you have lost to a " + dTotal);
+				System.out.println("Better luck next time!");
+			}
+		}
+	}
+
+	public BlackJackHand getpHand() {
+		return pHand;
+	}
+
+	public void setpHand(BlackJackHand pHand) {
+		this.pHand = pHand;
+	}
+
+	public BlackJackHand getdHand() {
+		return dHand;
+	}
+
+	public void setdHand(BlackJackHand dHand) {
+		this.dHand = dHand;
+	}
+	
 }

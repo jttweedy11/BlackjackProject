@@ -34,4 +34,14 @@ public class BlackJackHand extends Hand {
 			return false;
 		}
 	}
+	public void clearHand() {
+		this.blackJackCards = new ArrayList<Card>();
+	}
+	public List<Card> getBlackJackCards() {
+		return blackJackCards;
+	}
+	public void setBlackJackCards(List<Card> blackJackCards) {
+		this.blackJackCards = blackJackCards;
+	}
+	
 }

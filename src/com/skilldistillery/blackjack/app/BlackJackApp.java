@@ -10,7 +10,7 @@ import com.skilldistillery.blackjack.entities.Dealer;
 import com.skilldistillery.blackjack.entities.Deck;
 import com.skilldistillery.blackjack.entities.Player;
 
-//*****************Comparitor*****************
+//*****************Notes*****************
 //dealer is a type of player, but has a deck of cards they deal from as well. Extend player class.
 //I need a dealer
 //I need a player
@@ -22,15 +22,18 @@ public class BlackJackApp {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		BlackJackApp b = new BlackJackApp();
+		b.presentMenu();
 		b.launch();
+		System.out.println("I hope you enjoyed your game!");
 	}
 	public void launch() {
-		presentMenu();
 		d.shuffleDeck();
 		d.dealFirstCard();
 		d.dealSecond();
 		d.checkBlackJack();
 		d.playerMoves();
+		d.dealerMoves();
+		d.pickWinner();				
 		}
 	public void presentMenu() {
 		System.out.println("** Welcome to the BlackJack App!");
